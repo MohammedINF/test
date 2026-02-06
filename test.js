@@ -11,7 +11,7 @@ const ASSETS = [
   { name: "Ethereum", symbol: "ETH" },
 ];
 
-async function testApi() {
+async function fetchAssets() {
   for (const asset of ASSETS) {
     try {
       const res = await axios.get(
@@ -38,4 +38,8 @@ async function testApi() {
   }
 }
 
-testApi();
+// Run once immediately
+fetchAssets();
+
+// Then run every 10 seconds
+setInterval(fetchAssets, 10000);
